@@ -13,5 +13,5 @@ jobs:
         id: checkout
         uses: actions/checkout@v4
       # - run: mkdir logs
-      - run: echo "Hi" > ../output.log
+      - run: echo "Hi" > ../output_${{github.run_id}}.log
       - run: PWD
