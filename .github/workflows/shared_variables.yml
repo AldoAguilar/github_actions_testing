@@ -21,7 +21,6 @@ jobs:
           echo "Step 1 variable 1 is ${{steps.step1.outputs.step1_variable_1}}"
           echo "Step 1 variable 2 is ${{steps.step1.outputs.step1_variable_2}}"
           echo "step2_variable=12" >> $GITHUB_OUTPUT
-          echo "Step 2 variable is ${{steps.step2.outputs.step2_variable}}"
   job2:
     name: Job 2
     runs-on: ubuntu-latest
