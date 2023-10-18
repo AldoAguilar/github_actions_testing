@@ -13,9 +13,9 @@ jobs:
         id: checkout
         uses: actions/checkout@v4
       - run: mkdir logs
-      - run: echo "Hi" > logs/output.log
+      - run: echo "Hi" > logs/output_2.log
       - name: Upload output file
         uses: actions/upload-artifact@v3
         with:
           name: output-log-file
-          path: logs/output.log
+          path: logs/output_2.log
