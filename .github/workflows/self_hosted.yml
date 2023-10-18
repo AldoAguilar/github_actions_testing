@@ -12,5 +12,5 @@ jobs:
       - name: Checkout
         id: checkout
         uses: actions/checkout@v4
-      - run: echo "Hi" > C:\output.log
+      - run: echo "Hi" > output.log
         
