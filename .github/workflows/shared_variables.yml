@@ -8,7 +8,7 @@ jobs:
         uses: actions/checkout@v4
       - id: step1
         name: Step 1
-        run: echo "step1_variable=$(($RANDOM % 2))" >> $GITHUB_OUTPUT
+        run: echo "step1_variable=10" >> $GITHUB_OUTPUT
       - id: step2
         name: Step 2
         run: echo "${{steps.step1.outputs.step1_variable}}"
