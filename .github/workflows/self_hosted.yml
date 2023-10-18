@@ -12,6 +12,9 @@ jobs:
       - name: Checkout
         id: checkout
         uses: actions/checkout@v4
-      - shell: pwsh 
-        run: echo "Hi" > output.log
-        
+      - run: echo "Hi" > output.log
+      - name: Upload output file
+        uses: actions/upload-artifact@v3
+        with:
+          name: output-log-file
+          path: output.log
