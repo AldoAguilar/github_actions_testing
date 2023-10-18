@@ -29,9 +29,9 @@ jobs:
       - run: |
           echo "Job 1 output 1 is ${{needs.job1.outputs.output1}}"
           echo "Job 1 output 2 is ${{needs.job1.outputs.output2}}"
-      - run: chmod +x scripts/consume_variables.py
-      - name: Setup Python
-      - uses: actions/setup-python@v4.7.1
-      - run: |
-          python scripts/consume_variables.py ${{needs.job1.outputs.output1}} ${{needs.job1.outputs.output2}}
+      # - run: chmod +x scripts/consume_variables.py
+      # - name: Setup Python
+      # - uses: actions/setup-python@v4.7.1
+      # - run: |
+      #     python scripts/consume_variables.py ${{needs.job1.outputs.output1}} ${{needs.job1.outputs.output2}}
     
