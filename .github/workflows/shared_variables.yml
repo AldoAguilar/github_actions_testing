@@ -6,10 +6,12 @@
 # Storing workflow data as artifacts (files) -> https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts
 # Artifact and log retention policy -> https://docs.github.com/en/actions/learn-github-actions/usage-limits-billing-and-administration#artifact-and-log-retention-policy
 
-# https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
-# https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow?tool=webui
-# https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow?tool=cli
-# https://docs.github.com/en/actions/learn-github-actions/contexts#inputs-context
+# How to use "workflow_dispatch" event to set Action input values? -> https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
+# How to manually run a workflow using GitHub Web Interface? -> https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow?tool=webui
+# How to manually run a workflow using GitHub CLI? -> https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow?tool=cli
+# Use the input context to consume the worlow input values? -> https://docs.github.com/en/actions/learn-github-actions/contexts#inputs-context
+
+# Use expressions for logical comparisson, string processing, JSON fromatting, workflow status checks, etc? -> https://docs.github.com/en/actions/learn-github-actions/expressions
 name: Test
 on: 
   workflow_dispatch:
