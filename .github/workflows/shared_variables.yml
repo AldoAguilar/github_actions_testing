@@ -3,6 +3,8 @@
 # How to define Step outputs? -> https://docs.github.com/en/actions/learn-github-actions/contexts#steps-context
 # How to define outputs por Jobs and Consume them in another dependent Job? -> https://docs.github.com/en/actions/using-jobs/defining-outputs-for-jobs
 # How to add and use a script (at the repository) in a workflow? -> https://docs.github.com/en/actions/learn-github-actions/essential-features-of-github-actions#adding-scripts-to-your-workflow
+# Storing workflow data as artifacts (files) -> https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts
+# Artifact and log retention policy -> https://docs.github.com/en/actions/learn-github-actions/usage-limits-billing-and-administration#artifact-and-log-retention-policy
 name: Test
 on: workflow_dispatch
 jobs:
