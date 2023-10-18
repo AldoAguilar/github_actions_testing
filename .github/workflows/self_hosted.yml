@@ -14,4 +14,4 @@ jobs:
         uses: actions/checkout@v4
       # - run: mkdir logs
       - run: echo "Hi" > ../output.log
-      - run: echo PWD
+      - run: PWD
