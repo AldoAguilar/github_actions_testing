@@ -14,13 +14,13 @@ jobs:
       - name: Setup Python
         id: python
         uses: actions/setup-python@v4.7.1
-      - id: step1
-        name: Step 1
+      - name: Generate Step 1 Outputs (10 & 11)
+        id: step1
         run: |
           echo "step1_variable_1=10" >> $GITHUB_OUTPUT
           echo "step1_variable_2=11" >> $GITHUB_OUTPUT
       - id: step2
-        name: Step 2
+        name: Display Step 1 Outputs (10 & 11) and Generate Step 2 Output (12)
         run: |
           echo "Step 1 variable 1 is ${{steps.step1.outputs.step1_variable_1}}"
           echo "Step 1 variable 2 is ${{steps.step1.outputs.step1_variable_2}}"
