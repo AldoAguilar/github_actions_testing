@@ -26,19 +26,22 @@ jobs:
           echo "Step 1 variable 2 is ${{steps.step1.outputs.step1_variable_2}}"
           echo "step2_variable=12" >> $GITHUB_OUTPUT
           
-      - run: chmod +x scripts/share_complex_data.py
-      - shell: bash
+      - name: Python "share_complex_data.py" as Executable
+        run: chmod +x scripts/share_complex_data.py
+      - name: Generate Complex Data from Python
+        shell: bash
         run: python scripts/share_complex_data.py > output.log
-      - name: Share Complex Data
+      - name: Share Complex Data as Artifact
         uses: actions/upload-artifact@v3
         with:
           name: output-file
           path: output.log
-      - name: Shared Complex Data Between Steps
+      - name: Download Complex Data Between Steps
         uses: actions/download-artifact@v3
         with:
           name: output-file
-      - run: cat output.log
+      - name: Print downloaded Complex Data
+        run: cat output.log
   job2:
     name: Job 2
     runs-on: ubuntu-latest
@@ -50,15 +53,19 @@ jobs:
       - name: Setup Python
         id: python
         uses: actions/setup-python@v4.7.1
-      - run: |
+      - name: Print Shared Variables from Job 1
+        run: |
           echo "Job 1 output 1 is ${{needs.job1.outputs.output1}}"
           echo "Job 1 output 2 is ${{needs.job1.outputs.output2}}"
-      - run: chmod +x scripts/consume_variables.py
-      - run: |
+      - name: Python "consume_variables.py" as Executable
+        run: chmod +x scripts/consume_variables.py
+      - name: Consume Shared Varibles with Python
+        run: |
           python scripts/consume_variables.py ${{needs.job1.outputs.output1}} ${{needs.job1.outputs.output2}}
-      - name: Shared Complex Data Between Jobs
+      - name: Download Complex Data Between Jobs
         uses: actions/download-artifact@v3
         with:
           name: output-file
-      - run: cat output.log
+      - name: Print downloaded Complex Data
+        run: cat output.log
     
