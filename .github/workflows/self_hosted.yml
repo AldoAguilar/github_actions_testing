@@ -1,0 +1,16 @@
+# https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#choosing-self-hosted-runners
+# https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners
+# https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners#supported-architectures-and-operating-systems-for-self-hosted-runners
+# https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners#communication-requirements
+name: Self Hosted Test
+on: workflow_dispatch
+jobs:
+  job1:
+    name: Job 1
+    runs-on:  self-hosted
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+      - run: echo "Hi" > C:\Users\aaguil98\Desktop\output.log
+        
