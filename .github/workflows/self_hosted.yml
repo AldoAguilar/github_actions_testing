@@ -12,6 +12,7 @@ jobs:
       - name: Checkout
         id: checkout
         uses: actions/checkout@v4
+      - run: mkdir logs
       - run: echo "Hi" > logs/output.log
       - name: Upload output file
         uses: actions/upload-artifact@v3
