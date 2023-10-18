@@ -1,3 +1,8 @@
+# How to Share data between Jobs using Artifacts (files)? -> https://docs.github.com/en/actions/learn-github-actions/essential-features-of-github-actions#sharing-data-between-jobs
+# How to define Job outputs? -> https://docs.github.com/en/actions/learn-github-actions/contexts#example-usage-of-the-jobs-context
+# How to define Step outputs? -> https://docs.github.com/en/actions/learn-github-actions/contexts#steps-context
+# How to define outputs por Jobs and Consume them in another dependent Job? -> https://docs.github.com/en/actions/using-jobs/defining-outputs-for-jobs
+# How to add and use a script (at the repository) in a workflow? -> https://docs.github.com/en/actions/learn-github-actions/essential-features-of-github-actions#adding-scripts-to-your-workflow
 name: Test
 on: workflow_dispatch
 jobs:
