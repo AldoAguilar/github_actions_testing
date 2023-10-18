@@ -1,0 +1,28 @@
+name: Test 2
+on: workflow_dispatch
+jobs:
+  job1:
+    name: Job 1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4.7.1
+      - name: Python "share_output_file.py" as Executable
+        run: chmod +x scripts/share_output_file.py
+      - name: Generate Output File from Python
+        shell: bash
+        run: python scripts/share_output_file.py 
+      - name: Share Output File as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: output-file
+          path: output.log
+      - name: Download Complex Data Between Steps
+        uses: actions/download-artifact@v3
+        with:
+          name: output-file
+      - name: Print downloaded Complex Data
+        run: cat output.log
