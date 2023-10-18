@@ -5,8 +5,36 @@
 # How to add and use a script (at the repository) in a workflow? -> https://docs.github.com/en/actions/learn-github-actions/essential-features-of-github-actions#adding-scripts-to-your-workflow
 # Storing workflow data as artifacts (files) -> https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts
 # Artifact and log retention policy -> https://docs.github.com/en/actions/learn-github-actions/usage-limits-billing-and-administration#artifact-and-log-retention-policy
+
+# https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
+# https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow?tool=webui
+# https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow?tool=cli
+# https://docs.github.com/en/actions/learn-github-actions/contexts#inputs-context
 name: Test
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+        - info
+        - warning
+        - debug
+      tags:
+        description: 'Test scenario tags'
+        required: false
+        type: boolean
+      environment:
+        description: 'Environment to run tests against'
+        type: string
+        required: true
+      digit:
+        description: 'A number input'
+        type: number
+        required: true
 jobs:
   job1:
     name: Job 1
@@ -75,4 +103,17 @@ jobs:
           name: output-file
       - name: Print downloaded Complex Data
         run: cat output.log
+  job3:
+    name: Job 3
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Log level: $LEVEL"
+          echo "Tags: $TAGS"
+          echo "Environment: $ENVIRONMENT"
+          echo "Number: ${{ toJSON(inputs.digit) }}"
+        env:
+          LEVEL: ${{ inputs.logLevel }}
+          TAGS: ${{ inputs.tags }}
+          ENVIRONMENT: ${{ inputs.environment }}
     
