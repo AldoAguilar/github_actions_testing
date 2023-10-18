@@ -1,0 +1,14 @@
+name: Test
+on: workflow_dispatch
+jobs:
+  message_test:
+    runs-on: ubuntu-latest
+    steps:
+      - id: checkout
+        uses: actions/checkout@v4
+      - id: step1
+        name: Step 1
+        run: echo "step1_variable=$(($RANDOM % 2))" >> $GITHUB_OUTPUT
+      - id: step2
+        name: Step 2
+        run: echo "${{steps.step1.outputs.step1_variable}}"
