@@ -3,7 +3,21 @@
 # https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners#supported-architectures-and-operating-systems-for-self-hosted-runners
 # https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners#communication-requirements
 name: Self Hosted Test
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      test_request:
+        description: 'Test Request ID as number'
+        required: true
+      test_cases:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Test Cases ID as JSON List'
+        # Input has to be provided for the workflow to run
+        required: true
+      runners:
+        description: 'Runners tags as JSON List'
+        required: true
 jobs:
   job1:
     name: Job 1
@@ -15,3 +29,7 @@ jobs:
       # - run: mkdir logs
       - run: echo "Hi" > ../output_${{github.run_id}}.log
       - run: PWD
+
+      - run: echo ${{ inputs.test_request }}
+      - run: echo ${{ inputs.test_cases }}
+      - run: echo ${{ inputs.runners }}
